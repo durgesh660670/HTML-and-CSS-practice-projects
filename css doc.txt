@@ -1,0 +1,29 @@
+1. css selectors
+2. CSS Box model
+3. Float & clear
+4. Box-sizing border-box
+5. text-align
+6. Pseudo selectors
+7. display property,display:block,display:inline,display:inline-block
+8. Position absolute,relative,fixed,sticky
+9. Visibility & z-index
+10. flex box(display:flex,flex-direction:row,flex-flow:wrap,justify-content:center,align-item:center,align-self)
+
+-----------------
+responsive css
+----------------
+
+11. em,rem,vh,vw 
+12. media query
+13. attribute and nth child pseudo selectors
+14. before and after pseudo selector
+15. Box shadow and text shadow
+16. Variables and custom properties
+17. Animation and keyFrame
+18. transitions
+19. Transform
+20. dynamic img site: https://source.unsplash.com/1600x900/?beach
+21. grid
+23. grid with media qyery
+24. font awesome site for font icon (<script src="https://kit.fontawesome.com/5ae8d477e9.js" crossorigin="anonymous"></script>)
+

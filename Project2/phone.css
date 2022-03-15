@@ -1,0 +1,99 @@
+/* body{
+    background-color: rgb(228, 147, 147);
+} */
+
+html{
+
+    scroll-behavior: smooth;
+}
+
+#nav{
+
+    flex-direction: column;
+}
+
+#nav ul{
+padding-bottom: 8px;
+}
+
+#home{
+
+    height: 400px;
+    padding: 3px 43px;
+}
+
+#home::before{
+
+    height: 525px;
+}
+
+#home p {
+
+    color: white;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.h-primary {
+    font-size: 1.5rem;
+    padding: 12px;
+    opacity: 0.9;
+}
+
+#services-container {
+    margin-top: 30px;
+}
+
+#services{
+
+flex-direction: column;
+}
+
+
+#client-section{
+
+flex-wrap: wrap;
+
+height: 200px;
+}
+
+#client-section::before{
+    height: 200px;
+}
+
+
+
+#client-section img{
+
+    width: 60px;
+    height: 60px;
+}
+
+
+#contact-section{
+    position: relative;
+    height: 550px;
+
+}
+
+#contact-section::before{
+
+    height: 600px;
+   
+
+}
+
+#contact-box #form{
+    width: 70%;
+}
+
+#contact-box input,
+#contact-box textarea{
+width: 100%;
+padding: 10px;
+border-radius: 10px;
+font-size: 1rem;
+margin: 10px 0px;
+}
+
+
