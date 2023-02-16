@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+    <style>
+        body {
+            color: whitesmoke;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="start" onclick="start()">Start</button>
+    <button id="stop" onclick="stop()">Stop</button>
+    <button id="OnOff" onclick="toggle()">ON</button>
+    <div class="container">
+        <h1 id="timmer">9:10:01</h1>
+    </div>
+
+
+    <script>
+
+        const f1 = () => {
+            let dateObj = new Date()
+
+            let timmerObj = document.getElementById("timmer");
+            let h = dateObj.getHours();
+            let m = dateObj.getMinutes();
+            let s = dateObj.getSeconds();
+            timmerObj.innerHTML = `<h3> ${h}:${m}:${s}</h3>`
+        }
+
+
+        let sOb;
+        const start = () => {
+            sOb = setInterval(f1, 1000);
+        }
+
+        const stop = () => {
+
+            clearInterval(sOb);
+        }
+
+        let toggle = () => {
+
+            let startObj = document.getElementById("OnOff");
+            if (startObj.innerHTML == 'ON') {
+                start();
+                startObj.innerText = 'OFF';
+                console.log(startObj.innerText);
+            }
+            else {
+                stop();
+                startObj.innerText = 'ON';
+
+            }
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

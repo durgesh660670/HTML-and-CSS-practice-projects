@@ -1,0 +1,48 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    
+}
+
+.circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 220px;
+    width: 220px;
+    border-radius: 50%;
+    background:conic-gradient(rgb(17,255,8) 30deg,rgba(0,0,0,0.1));
+    box-shadow:-3px -3px 8pz -1px rgba(255,255,255,0.63)
+}
+
+.circle::before{
+    content: "";
+    position: absolute;
+    height: 195px;
+    width: 195px;
+    border-radius: 50%;
+    background-color: rgb(23, 24, 23);
+    box-shadow: inset 3px 3px 5px -1px rgba(0, 0, 0, 0.3),
+    inset -3px -3px 5px -1px rgba(255,255,255,0.904)
+}
+
+#value{
+
+    position: relative;
+    font-size: 37px;
+    font-weight: 600;
+    color: rgb(150, 150, 150);
+}

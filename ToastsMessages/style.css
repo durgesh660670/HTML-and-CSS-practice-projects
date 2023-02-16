@@ -1,0 +1,157 @@
+:root {
+    --orange1:#ce8500;
+    --orange2: #ffa502;
+    --orange3: #ffd080;
+    --orange4: #ffdb9b;
+    --orange5: #ffc766;
+
+    --green1:#26ce00;
+    --green2: #02ff89;
+    --green3: #89ef8b;
+    --green4: #bff6c2;
+    --green5:#71db5a;
+  }
+
+  
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+body {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: #e2e2e2;
+    overflow: hidden;
+}
+
+.message{
+
+    background: var(--orange4);
+    padding: 20px 40px;
+    min-width: 420px;
+    width: 0px;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    border-radius: 4px;
+    border-left: 8px solid var(--orange2) ;
+    overflow: hidden;
+    display: none;
+
+}
+
+.message.show{
+    animation: show_slide 1s ease forwards;
+}
+
+
+@keyframes show_slide{
+    0%{
+        transform: translateX(100%);
+    }
+    40%{
+        transform: translateX(-10%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-10px);
+    }
+}
+
+.message.hide{
+    animation: hide_slide 1s ease forwards;
+}
+@keyframes hide_slide{
+    0%{
+        transform: translateX(-10px);
+    }
+    40%{
+        transform: translateX(0%);
+    }
+    80%{
+        transform: translateX(-10%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+
+
+.message .fa-exclamation-circle{
+
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--orange1);
+    font-size: 30px;
+}
+
+.message .msg{
+
+    padding: 0 20px;
+}
+
+.message .close-btn{
+
+    background: var(--orange3);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px 18px;
+    
+}
+
+.close-btn:hover{
+
+    cursor: pointer;
+    background: var(--orange5);
+}
+
+.close-btn .fa-times{
+
+    color:var(--orange1);
+    font-size: 22px;
+    line-height: 40px;
+
+}
+
+.message.success {
+
+    background: var(--green1);
+}
+
+.message.success {
+
+    background: var(--green4);
+    border-left: 8px solid var(--green2) ;
+}
+
+.message.success .fa-exclamation-circle{
+
+    color: var(--green1);
+}
+
+.message.success .close-btn{
+
+    background: var(--green3);
+}
+
+.message.success .close-btn:hover{
+
+        background: var(--green5);
+}
+
+.message.success .fa-times{
+    color:var(--green1);
+}
+

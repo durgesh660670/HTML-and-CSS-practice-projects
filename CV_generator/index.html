@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- cv design -->
+
+    <div class="container" id="cvDesign">
+        <h1 class="text-center my-1">Resume Generator</h1>
+
+        <p class="text-center">By Durgesh</p>
+
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <h3>Personal details</h3>
+                <div class="form-group">
+                    <label for="nameField">Your Name</label>
+                    <input type="text" placeholder="Enter name" id="nameField" class="form-control">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="phoneField">Your Phone Number</label>
+                    <input type="number" placeholder="Enter phone number" id="phoneField" class="form-control">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="addressField">Your Address</label>
+                    <textarea rows="5" placeholder="Enter address" id="addressField" class="form-control"></textarea>
+                </div>
+                <p class="text-secondary mt-3">Important links</p>
+
+                <div class="form-group mt-3">
+                    <label for="fbField">Facebook</label>
+                    <input type="text" placeholder="Enter here" id="fbField" class="form-control">
+                </div>
+                <div class="form-group mt-3">
+                    <div class="form-group ">
+                        <label for="instaField">Instagram</label>
+                        <input type="text" placeholder="Enter here" id="instaField" class="form-control">
+                    </div>
+                    <div class="form-group mt-3">
+                        <div class="form-group ">
+                            <label for="liField">LinkedIn</label>
+                            <input type="text" placeholder="Enter here" id="liField" class="form-control">
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>Profession details</h1>
+                    <div class="form-group mt-3">
+                        <label for="Field">Objective</label>
+                        <textarea rows="3" placeholder="Enter here" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group mt-3" id="WE">
+                        <label for="Field">Work Experience</label>
+                        <textarea rows="4" placeholder="Enter here" class="form-control weField"></textarea>
+                        <!-- new text area -->
+                        <div class="container text-center mt-3 " id="weAddButton">
+                            <button class="btn btn-primary btn-sm" onclick="AddNewWE()">Add</button>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3" id="AQ">
+                        <label for="Field">Academic Qualification</label>
+                        <textarea rows="4" placeholder="Enter here" class="form-control eqField"
+                            id="eqAddButton"></textarea>
+                        <!-- new text area -->
+                        <div class="container text-center mt-3" id="aqAddButton">
+                            <button class="btn btn-primary btn-sm" onclick="AddNewAQ()">Add</button>
+                        </div>
+                    </div>
+
+
+
+            </div>
+
+
+        </div>
+        <div class="container text-center mt-3">
+            <button class="btn btn-primary btn-lg" onclick="generateCV()">Generate CV
+
+            </button>
+        </div>
+    </div>
+    <!-- cv templete -->
+    <div class="container" id='cvTemplete'>
+        <div class="row">
+            <div class="col-md-4 profileT mt-3 text-center">
+                <!-- left row -->
+                <img src="img/profile.png" alt="" class='profile m-2'>
+                <h6 id='nameFieldT1'>
+                    Durgesh kumar gupta
+                </h6>
+                <h6 id="phoneFieldT1">
+                    Mobile numbar
+                </h6>
+                <p id="addressFieldT1">
+                    malad est mumbai
+                </p>
+                <hr>
+                <a href="#" id='fbFieldT1'>www.facebook.com</a><br>
+                <a href="#" id='instaFieldT1'>www.instagram.com</a><br>
+                <a href="#" id='liFieldT1'>www.linkedin.com</a><br>
+
+            </div>
+            <div class="col-md-8">
+                <!-- right row     -->
+
+                <h3>Objective:</h3>
+                <p>fdui sdiuds sdfsfdiu fdsbuisdds sfdbudsi fsdibsd sdbisib sdbisib
+                    sndsnfds dsfifdsif dsfdfs sfddfsi dfsn
+                    ifdsiosd sdfiodoid sdfdshdfs sdnfsdn
+                </p>
+                <div class="card ">
+
+                    <div class="card-header profileT">
+                    Work Experience
+                    </div>
+                    <div class="card-body">
+                     <ul>
+                         <li>softwsrae de</li>
+                         <li>softwsrae de</li>
+                         <li>softwsrae de</li>
+                         <li>softwsrae de</li>
+                         <li>softwsrae de</li>
+                     </ul>
+                    </div>
+                </div>
+                <div class="card mt-3">
+
+                    <div class="card-header profileT">
+                    Academic Qualification
+                    </div>
+                    <div class="card-body">
+                     <ul>
+                         <li>softwsrae de</li>
+                         <li>softwsrae de</li>
+                         <li>softwsrae de</li>
+                         <li>softwsrae de</li>
+                         <li>softwsrae de</li>
+                     </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-3 text-center">
+            <button class="btn btn-primary btn-lg">
+                Download CV
+            </button>
+        </div>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
