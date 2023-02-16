@@ -1,7 +1,5 @@
 
-
-
-var homePageData = function() {
+var homePageData = function () {
 
   var g = localStorage.getItem('toDos')
 
@@ -10,26 +8,39 @@ var homePageData = function() {
     var toDos = JSON.parse(g);
 
 
-    // console.log(toDos1);
+
 
     for (const key of toDos) {
 
       var newElementObj = document.createElement('textarea');
-      newElementObj.style.display='block';
-      newElementObj.style.width='100%'
-      var headingObj = document.createElement('h3');
-      var paraObj = document.createElement('p');
+      var newElementEditObj = document.createElement('button');
+      var newElementUpdateObj = document.createElement('button');
+
+      var newElementEditNodeObj = document.createTextNode('EDIT')
+
+      newElementEditObj.setAttribute("id","edit");
+
+      var newElementUpdateNodeObj = document.createTextNode('UPDATE')
+
+
+      newElementObj.style.display = 'inline';
+      newElementObj.style.width = '70%'
+
+      var newElementNodeObj = document.createTextNode(key.desc)
+      newElementObj.setAttribute("readOnly", "true")
       var cardObj = document.getElementById('card');
 
-      headingObj.innerText = key.title;
-      paraObj.innerText = key.desc
-      newElementObj.appendChild(headingObj);
-      newElementObj.appendChild(paraObj);
+      newElementObj.appendChild(newElementNodeObj);
+
+      newElementEditObj.appendChild(newElementEditNodeObj);
+      newElementUpdateObj.appendChild(newElementUpdateNodeObj);
       cardObj.appendChild(newElementObj);
+      cardObj.appendChild(newElementEditObj)
+      cardObj.appendChild(newElementUpdateObj)
 
       newElementObj.classList.add('card1');
 
-      //  console.log(key.title)
+      //  console.log(key.desc)
 
     }
 
@@ -43,12 +54,10 @@ homePageData();
 
 var add_btn = function () {
 
-  var title = document.getElementById('title').value;
   var desc = document.getElementById('desc').value;
 
   var obj1 = {
 
-    title: title,
     desc: desc,
     id: Math.trunc(Math.random() * 1000)
 
@@ -64,34 +73,76 @@ var add_btn = function () {
 
     localStorage.setItem('toDos', JSON.stringify(toDos));
 
+    var newElementObj = document.createElement('textarea');
+    var newElementEditObj = document.createElement('button');
+    var newElementUpdateObj = document.createElement('button');
+
+    var newElementEditNodeObj = document.createTextNode('EDIT')
+
+    newElementEditObj.setAttribute("id","edit");
+    var newElementUpdateNodeObj = document.createTextNode('UPDATE')
+    newElementObj.style.display = 'inline';
+    newElementObj.style.width = '70%'
+
+    var newElementNodeObj = document.createTextNode(obj1.desc)
+    newElementObj.setAttribute("readOnly", "true")
+    var cardObj = document.getElementById('card');
+
+    newElementObj.appendChild(newElementNodeObj);
+
+    newElementEditObj.appendChild(newElementEditNodeObj);
+    newElementUpdateObj.appendChild(newElementUpdateNodeObj);
+    cardObj.appendChild(newElementObj);
+    cardObj.appendChild(newElementEditObj)
+    cardObj.appendChild(newElementUpdateObj)
+
+    newElementObj.classList.add('card1');
+
 
   }
   else {
 
     var toDos = JSON.parse(f);
+    console.log(toDos);
 
-    toDos.push(obj1);
+    toDos.push(obj1)
 
     localStorage.setItem('toDos', JSON.stringify(toDos));
 
     var newElementObj = document.createElement('textarea');
-    newElementObj.style.display='block';
-    newElementObj.style.width='100%'
-    var headingObj = document.createElement('h3');
-    var paraObj = document.createElement('p');
+    var newElementEditObj = document.createElement('button');
+    var newElementUpdateObj = document.createElement('button');
+
+    var newElementEditNodeObj = document.createTextNode('EDIT')
+
+    newElementEditObj.setAttribute("id","edit");
+    var newElementUpdateNodeObj = document.createTextNode('UPDATE')
+    newElementObj.style.display = 'inline';
+    newElementObj.style.width = '70%'
+
+    var newElementNodeObj = document.createTextNode(obj1.desc)
+    newElementObj.setAttribute("readOnly", "true")
     var cardObj = document.getElementById('card');
 
-    headingObj.innerText = key.title;
-    paraObj.innerText = key.desc
-    newElementObj.appendChild(headingObj);
-    newElementObj.appendChild(paraObj);
+    newElementObj.appendChild(newElementNodeObj);
+
+    newElementEditObj.appendChild(newElementEditNodeObj);
+    newElementUpdateObj.appendChild(newElementUpdateNodeObj);
     cardObj.appendChild(newElementObj);
+    cardObj.appendChild(newElementEditObj)
+    cardObj.appendChild(newElementUpdateObj)
 
     newElementObj.classList.add('card1');
 
+
   }
 
+
+
 }
+
+
+
 
 
 
