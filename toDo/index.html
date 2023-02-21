@@ -2,34 +2,44 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="t1.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/5ae8d477e9.js" crossorigin="anonymous"></script>
 </head>
 
-<body id="body">
+<body>
 
 
-  <section id="toDos">
 
-    <div class="form1" id="form1">
-      
-      Desc : <input type="text" name="desc" id="desc"><br>
-  
-      <button onclick='add_btn()'> Add</button>
-  
-    </div>
-  </section>
+    <main class="app">
 
-  <section id="card">
+        <!-- <h1>My To do list....</h1> -->
 
-  </section>
- 
+        <div class="input-header">
+            <h1><span class="date"></span></h1>
+            <div class="to-do-input">
+                <input type="text" name="" id="item" placeholder="Enter a task....">
+                <button id="enter"><i class="fa-sharp fa-solid fa-circle-plus fa-3x"></i></button>
+            </div>
+
+        </div>
 
 
-<script src="t1.js"></script>
+        <div class="to-do-list">
+
+        </div>
+
+
+    </main>
+
+
+
+
+
+    <script src="script.js"></script>
 </body>
 
 </html>
