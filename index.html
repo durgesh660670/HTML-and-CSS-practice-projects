@@ -19,15 +19,28 @@
         <!-- <h1>My To do list....</h1> -->
 
         <div class="input-header">
-            <h1><span class="date"></span></h1>
             <div class="to-do-input">
-                <input type="text" name="" id="item" placeholder="Enter a task....">
+                <input type="text" name="" id="search" placeholder="Search your notes" onkeypress="search(event)">
                 <button id="enter"><i class="fa-sharp fa-solid fa-circle-plus fa-3x"></i></button>
             </div>
 
         </div>
 
 
+        <div class="new-to-do-box">
+            <div class="item">
+                <div class="input-controller2">
+
+                    <textarea name="" cols="30" rows="10" id="item" ></textarea>
+
+                </div>
+                <div class="submit-div">
+
+                    <button id="submit">Save</button>
+                   
+                </div>
+            </div>
+        </div>
         <div class="to-do-list">
 
         </div>
