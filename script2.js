@@ -32,7 +32,7 @@ var create = function () {
 
 
 
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 46; i++) {
 
         var page = {
             title: 'This is title ',
@@ -124,18 +124,16 @@ var display = function (currentPageIndex, lastPageIndex) {
 
 
     if (totalPages.toString().includes('.')) {
-        totalPages = parseInt(pageArr1.length / noOfPagePerPage)+1;
+        totalPages = parseInt(pageArr1.length / noOfPagePerPage) + 1;
     }
     else {
         totalPages = parseInt(pageArr1.length / noOfPagePerPage);
     }
 
     if (currentPageIndex + 1 == lastPageIndex) {
-        
-        var pageReminder = pageArr1.length % noOfPagePerPage;
+        var pageReminder = totalPages % noOfPagePerPage;
         for (var i = currentPageIndex * noOfPagePerPage; i < currentPageIndex * noOfPagePerPage + pageReminder; i++) {
 
-          
             text += `<div class="card">
         <h3>${pageArr1[i].title}</h3>
         <p>${pageArr1[i].desc}</p>
@@ -146,6 +144,7 @@ var display = function (currentPageIndex, lastPageIndex) {
 
     }
     else {
+
         for (var i = currentPageIndex * noOfPagePerPage; i < currentPageIndex * noOfPagePerPage + noOfPagePerPage; i++) {
 
             text += `<div class="card">
@@ -155,7 +154,6 @@ var display = function (currentPageIndex, lastPageIndex) {
 
         }
         containerObj.innerHTML = text;
-
 
 
     }
@@ -184,7 +182,7 @@ var display = function (currentPageIndex, lastPageIndex) {
 window.addEventListener('load', () => {
 
     create()
-    display(0,1)
+    display(0)
 })
 
 
