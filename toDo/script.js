@@ -1,9 +1,10 @@
+let preloaderObj = document.getElementById("preloader");
 var itemsArray = localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")) : []
-
+var startedItemsArray = localStorage.getItem("staredItems") ? JSON.parse(localStorage.getItem("staredItems")) : []
 var noOfPagePerPage = 10;
 var totalPages;
 
-
+console.log(itemsArray)
 
 var previousBtnObj = document.querySelector('.previous')
 var nextBtnObj = document.querySelector('.next')
@@ -98,6 +99,19 @@ document.querySelector('#submit').addEventListener('click', () => {
 
     var item1 = document.getElementById('item1').value;
     var item2 = displayDate()
+
+    if (item1 == "" || item1 == null || item1.trim().length == 0) {
+
+        swal("Empty Note discarted");
+
+        return "";
+    }
+    if (item1.trim().length > 1000) {
+        swal("Note can not have more than 1000 length");
+
+        return "";
+    }
+
     var item = {
         item1: item1,
         item2: item2,
@@ -119,6 +133,8 @@ document.querySelector('#enter').addEventListener('click', () => {
     toDoList.style.display = 'none'
     var newTB = document.querySelector('.new-to-do-box');
     newTB.style.display = 'block'
+    document.querySelector('.pagination').style.display = 'none';
+
 
 
 })
@@ -134,39 +150,45 @@ var createItem = function (item) {
 }
 
 
+
+
+
 var displayItems = function (currentPageIndex, lastPageIndex) {
 
+    
+   
     var itemsArray1 = localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")) : []
+    if(itemsArray1.length==0){
+        document.querySelector('.empty').style.display='block';
+        document.querySelector('.pagination').style.display='none';
+    }
 
     var indexObj = document.querySelector('.index');
 
 
 
-    console.log(itemsArray1)
-
-    if (itemsArray1 == undefined) {
-        alert('djdj')
-    }
-
     var items = ``;
 
     var totalPages = itemsArray1.length / noOfPagePerPage;
 
-    
+
 
     if (totalPages.toString().includes('.')) {
-        totalPages = parseInt(itemsArray1.length / noOfPagePerPage) + 1;
+        totalPages = parseInt(totalPages) + 1;
     }
     else {
-        totalPages = parseInt(itemsArray1.length / noOfPagePerPage);
+        totalPages = parseInt(totalPages);
     }
-    lastPageIndex=totalPages-1;
+    lastPageIndex = totalPages - 1;
     if (currentPageIndex == lastPageIndex) {
 
         var pageReminder = itemsArray1.length % noOfPagePerPage;
-        for (var i = currentPageIndex * noOfPagePerPage; i < currentPageIndex * noOfPagePerPage + pageReminder; i++) {
+        if(!pageReminder){
+            pageReminder=noOfPagePerPage;
+        }
+        for (var i = currentPageIndex * noOfPagePerPage; i < (currentPageIndex * noOfPagePerPage) + pageReminder; i++) {
 
-            
+           
             items += ` <div class="item">
             <div class="input-controller">
     
@@ -174,29 +196,30 @@ var displayItems = function (currentPageIndex, lastPageIndex) {
                 <div class="action-div">
                 <i class="fa-sharp fa-solid fa-trash  deleteBtn"></i>
                
-                <i class="fa-solid fa-pen-to-square editBtn"></i>
-                <i class="fa-regular fa-star starBtn"></i>
-                </div>
+                <i class="fa-solid fa-pen-to-square editBtn"></i>`;
+            if (itemsArray1[i].item3 == 'true')
+                items += `<i class="starBtn fa-solid fa-star"></i>`
+            else
+                items += `<i class="starBtn fa-regular fa-star "></i>`
+
+            items += `</div>
                 
             </div>
             <div class="save-div">
     
                 <button class="saveBtn">Save</button>
-                <small id="date">Edited:${itemsArray1[i].item2}</small>
+                <small id="date">Edited:</small>
                
             </div>
-        </div>`;
-
+        </div>`
         }
         document.querySelector('.to-do-list').innerHTML = items;
 
     }
     else {
+        for (var i = currentPageIndex * noOfPagePerPage; i < currentPageIndex * noOfPagePerPage+noOfPagePerPage; i++) {
 
-
-        for (var i = currentPageIndex * noOfPagePerPage; i < currentPageIndex * noOfPagePerPage + noOfPagePerPage; i++) {
-
-
+          
             items += ` <div class="item">
             <div class="input-controller">
     
@@ -204,9 +227,13 @@ var displayItems = function (currentPageIndex, lastPageIndex) {
                 <div class="action-div">
                 <i class="fa-sharp fa-solid fa-trash  deleteBtn"></i>
                
-                <i class="fa-solid fa-pen-to-square editBtn"></i>
-                <i class="fa-regular fa-star starBtn"></i>
-                </div>
+                <i class="fa-solid fa-pen-to-square editBtn"></i>`;
+            if (itemsArray1[i].item3 == 'true')
+                items += `<i class="starBtn fa-solid fa-star"></i>`
+            else
+                items += `<i class="starBtn fa-regular fa-star "></i>`
+
+            items += `</div>
                 
             </div>
             <div class="save-div">
@@ -340,14 +367,81 @@ var starListeners = function () {
 
 
         e.addEventListener('click', () => {
-            itemsArray[i].item3 = 'true';
+
+
+            starBtnObj[i].classList.toggle("fa-regular")
+            starBtnObj[i].classList.toggle("fa-star")
+            starBtnObj[i].classList.toggle("fa-solid")
+            starBtnObj[i].classList.toggle("fa-star")
+
+            // return "";
+            if (starBtnObj[i].getAttribute("class").includes('fa-solid')) {
+                itemsArray[i].item3 = 'true';
+            }
+            else
+                itemsArray[i].item3 = 'false';
+
+
             localStorage.setItem('items', JSON.stringify(itemsArray))
-            starBtnObj[i].classList('')
             location.reload()
         })
 
     })
 }
+
+document.querySelector('#displayStared').addEventListener('click', () => {
+
+
+    displayStared();
+
+})
+
+var displayStared = function () {
+
+
+    items = '';
+
+    var itemsArray1 = [0];
+    itemsArray1 = localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")) : [];
+
+    itemsArray1 = itemsArray1.filter(i => i.item3 == 'true')
+
+    for (var i = 0; i < itemsArray1.length; i++) {
+
+
+        items += ` <div class="item">
+        <div class="input-controller">
+
+            <textarea name="" id="" cols="30" rows="10" disabled>${itemsArray1[i].item1}</textarea>
+            <div class="action-div">
+            <i class="fa-sharp fa-solid fa-trash  deleteBtn"></i>
+           
+            <i class="fa-solid fa-pen-to-square editBtn"></i>`;
+        if (itemsArray1[i].item3 == 'true')
+            items += `<i class="starBtn fa-solid fa-star"></i>`
+        else
+            items += `<i class="starBtn fa-regular fa-star "></i>`
+
+        items += `</div>
+            
+        </div>
+        <div class="save-div">
+
+            <button class="saveBtn">Save</button>
+            <small id="date">Edited:</small>
+           
+        </div>
+    </div>`
+    }
+    document.querySelector('.to-do-list').innerHTML = items;
+    document.querySelector('.pagination').style.display = 'none';
+
+
+
+    // itemsArray1.filter
+
+}
+
 
 var displayDate = function () {
 
@@ -404,6 +498,7 @@ var search = function (e) {
                 }
 
                 document.querySelector('.to-do-list').innerHTML = items;
+                // document.querySelector('.pagination').style.display='none';
             }
             else {
                 console.log(itemsIndexResult)
@@ -469,8 +564,15 @@ const closeSidebar = () => {
 }
 
 
+
+
 window.addEventListener('load', () => {
-    displayItems(0,0)
+    displayItems(0, 0)
     hideNewToTOBox()
+
+    setTimeout(() => {
+        preloaderObj.style.display = "none";
+    }, 400);
+
     // displayDate()
 })

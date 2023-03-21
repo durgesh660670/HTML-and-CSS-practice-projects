@@ -8,10 +8,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+    </link>
     <script src="https://kit.fontawesome.com/5ae8d477e9.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
+
+    <!-- preloader -->
+
+    <div id="preloader">
+
+
+    </div>
 
     <section id="side-bar">
         <div class="logo-section">
@@ -24,8 +34,8 @@
 
         <div class="menu">
             <ul>
-                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#"><i class="fa-regular fa-star"></i>
+                <li><a href="/" id="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a id="displayStared"><i class="fa-regular fa-star"></i>
                         Starred</a></li>
 
 
@@ -43,9 +53,14 @@
         </div>
         <div class="dashboard">
 
+
             <main class="app">
 
+               
+
                 <!-- <h1>My To do list....</h1> -->
+
+                <!-- search div start -->
 
                 <div class="input-header">
                     <div class="to-do-input">
@@ -56,6 +71,7 @@
 
                 </div>
 
+                <!-- search div end -->
 
                 <div class="new-to-do-box">
                     <div class="item">
@@ -71,6 +87,16 @@
                         </div>
                     </div>
                 </div>
+
+
+                <!-- empty screen start -->
+
+                <div class="empty">
+                    <img src="./img/empty-glass-outline.png" alt="">
+                    <p>Notes you add appear here</p>
+                </div>
+
+                 <!-- empty screen end -->
                 <div class="to-do-list">
 
                 </div>
