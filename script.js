@@ -1,4 +1,3 @@
-let preloaderObj = document.getElementById("preloader");
 var itemsArray = localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")) : []
 var startedItemsArray = localStorage.getItem("staredItems") ? JSON.parse(localStorage.getItem("staredItems")) : []
 var noOfPagePerPage = 10;
@@ -96,7 +95,7 @@ var pagebutton = function (currentPageIndex, lastPageIndex) {
 
 document.querySelector('#submit').addEventListener('click', () => {
 
-
+   
     var item1 = document.getElementById('item1').value;
     var item2 = displayDate()
 
@@ -134,6 +133,7 @@ document.querySelector('#enter').addEventListener('click', () => {
     var newTB = document.querySelector('.new-to-do-box');
     newTB.style.display = 'block'
     document.querySelector('.pagination').style.display = 'none';
+    document.querySelector('.empty').style.display = 'none';
 
 
 
@@ -155,12 +155,13 @@ var createItem = function (item) {
 
 var displayItems = function (currentPageIndex, lastPageIndex) {
 
-    
-   
+
+
     var itemsArray1 = localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")) : []
-    if(itemsArray1.length==0){
-        document.querySelector('.empty').style.display='block';
-        document.querySelector('.pagination').style.display='none';
+    if (itemsArray1.length == 0) {
+        document.querySelector('.empty').style.display = 'block';
+        document.querySelector('.pagination').style.display = 'none';
+        return;
     }
 
     var indexObj = document.querySelector('.index');
@@ -180,15 +181,18 @@ var displayItems = function (currentPageIndex, lastPageIndex) {
         totalPages = parseInt(totalPages);
     }
     lastPageIndex = totalPages - 1;
-    if (currentPageIndex == lastPageIndex) {
 
-        var pageReminder = itemsArray1.length % noOfPagePerPage;
-        if(!pageReminder){
-            pageReminder=noOfPagePerPage;
-        }
+
+    var pageReminder = itemsArray1.length % noOfPagePerPage;
+    if (!pageReminder) 
+        pageReminder = noOfPagePerPage
+    
+
+
+    if (currentPageIndex == lastPageIndex) {
         for (var i = currentPageIndex * noOfPagePerPage; i < (currentPageIndex * noOfPagePerPage) + pageReminder; i++) {
 
-           
+
             items += ` <div class="item">
             <div class="input-controller">
     
@@ -215,11 +219,11 @@ var displayItems = function (currentPageIndex, lastPageIndex) {
         }
         document.querySelector('.to-do-list').innerHTML = items;
 
-    }
-    else {
-        for (var i = currentPageIndex * noOfPagePerPage; i < currentPageIndex * noOfPagePerPage+noOfPagePerPage; i++) {
+    } else {
 
-          
+        for (var i = 0; i < noOfPagePerPage; i++) {
+
+
             items += ` <div class="item">
             <div class="input-controller">
     
@@ -245,10 +249,6 @@ var displayItems = function (currentPageIndex, lastPageIndex) {
         </div>`
         }
         document.querySelector('.to-do-list').innerHTML = items;
-
-
-
-
     }
 
 
@@ -396,6 +396,7 @@ document.querySelector('#displayStared').addEventListener('click', () => {
 
 })
 
+
 var displayStared = function () {
 
 
@@ -442,6 +443,18 @@ var displayStared = function () {
 
 }
 
+document.querySelector('#displaySettings').addEventListener('click', () => {
+    displaySettings();
+
+})
+
+
+var displaySettings=function(){
+
+    document.querySelector('.dashboard').style.display='none';
+    document.querySelector('.container').style.display='none';
+
+}
 
 var displayDate = function () {
 
@@ -564,15 +577,15 @@ const closeSidebar = () => {
 }
 
 
+document.querySelector('#home').addEventListener("click", () => {
+    displayItems(0, 0)
+    hideNewToTOBox()
 
+
+})
 
 window.addEventListener('load', () => {
     displayItems(0, 0)
     hideNewToTOBox()
 
-    setTimeout(() => {
-        preloaderObj.style.display = "none";
-    }, 400);
-
-    // displayDate()
 })
